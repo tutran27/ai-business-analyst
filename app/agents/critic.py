@@ -32,12 +32,12 @@ async def critic_agent(state):
 
     Nhiệm vụ của bạn:
 
-    1. Kiểm tra tính logic và sự nhất quán.
-    2. Nếu thiếu thông tin quan trọng hoặc không hợp lý → trả về:
+    1. Nếu thiếu thông tin quan trọng hoặc không hợp lý → trả về:
        IMPROVE: <lý do cụ thể>
 
-    3. Nếu đầy đủ và hợp lý → trả về JSON hợp lệ theo format:
+    2. Nếu đầy đủ và hợp lý hãy trả về JSON theo format dưới đây và không cần thêm nhận xét:
 
+    Format JSON cần trả về: (Trước json không cần text giải thích)
     {{
       "market_summary": "...",
       "financial_projection": "...",
@@ -49,15 +49,14 @@ async def critic_agent(state):
         "threats": ["..."]
       }}
     }}
-
     LƯU Ý QUAN TRỌNG VỀ ĐỊNH DẠNG (BẮT BUỘC):
     - Trường "strategy" và "financial_projection" BẮT BUỘC phải là MỘT CHUỖI STRING (String) gom toàn bộ nội dung. TUYỆT ĐỐI KHÔNG chia nhỏ thành các Dictionary/Object lồng nhau (như {{"positioning": "..."}}).
     - Sử dụng ký tự \\n để xuống dòng bên trong chuỗi string nếu cần.
     - Escape (sử dụng dấu \\) cho các dấu ngoặc kép bên trong nội dung văn bản để đảm bảo JSON có thể được parse.
     
     Chỉ trả về:
-    - Hoặc "IMPROVE: ..."
-    - Hoặc JSON hợp lệ
+    - Hoặc "IMPROVE: ..." (nếu có vấn đề)
+    - Hoặc JSON hợp lệ, trước json không cần bất kỳ text giải thích nào (nếu không có vấn đề)
     Không thêm giải thích ngoài JSON.
     """
 

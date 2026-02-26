@@ -1,9 +1,10 @@
 from app.graph import create_graph
+import asyncio
 
 graph = create_graph()
 
 state = {
-    "user_query": "Mở chuỗi cà phê tại Việt Nam",
+    "user_query": "Kinh doanh cà phê ở Việt Nam",
     "research_report": None,
     "financial_report": None,
     "strategy_report": None,
@@ -11,8 +12,6 @@ state = {
     "final_output": None,
     "retry_count": 0
 }
-
-import asyncio
 
 result = asyncio.run(graph.ainvoke(state))
 
